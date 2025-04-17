@@ -50,7 +50,7 @@ module AspaceOauth
     build_url(host)
     if config[:config][:idp_slo_service_url]
       host = config[:idp_slo_service_url]
-      build_url(host)
+      build_url(host,"")
     else
       build_url(
         AppConfig[:frontend_proxy_url],
