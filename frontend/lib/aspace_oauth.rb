@@ -49,9 +49,7 @@ module AspaceOauth
     host = config[:config][:idp_slo_service_url]
     build_url(host)
     if config[:config][:idp_slo_service_url]
-      URI::HTTPS.build(
-        host: URI(host).host
-      ).to_s
+      config[:config][:idp_slo_service_url].to_s
     else
       build_url(
         AppConfig[:frontend_proxy_url],
