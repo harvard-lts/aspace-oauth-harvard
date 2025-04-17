@@ -46,11 +46,15 @@ module AspaceOauth
   def self.saml_logout_url
     config = get_oauth_config_for("saml")
     return unless config
-
-    build_url(
-      AppConfig[:frontend_proxy_url],
-      "#{AppConfig[:frontend_proxy_prefix]}auth/saml/spslo"
-    )
+    if config[:idp_slo_service_url]
+      host = config[:idp_slo_service_url]
+      build_url(host)
+    else
+      build_url(
+        AppConfig[:frontend_proxy_url],
+        "#{AppConfig[:frontend_proxy_prefix]}auth/saml/spslo"
+      )
+    end
   end
 
   def self.use_uid?
