@@ -47,7 +47,6 @@ module AspaceOauth
     config = get_oauth_config_for("saml")
     return unless config
     host = config[:config][:idp_slo_service_url]
-    build_url(host)
     if config[:config][:idp_slo_service_url]
       config[:config][:idp_slo_service_url].to_s
     else
